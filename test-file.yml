@@ -1,0 +1,3 @@
+jobs:
+  call-workflow:
+    uses: blalllllll/lklkl/lkl/test-release.yml@3.6
