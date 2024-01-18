@@ -1,0 +1,16 @@
+name: "Test workflow" 
+on:
+  workflow_dispatch:
+    inputs:
+      branchname:
+        description: "Name of branch to be"
+        required: true
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+          with:
+            ref: ${{ inputs.branchname }}
+          run: yq eval ".jobs.call-workflow.uses = \"nowe_blajKKKKK/OMG-release.yml@$template_version\"" test_file.yml > test_file_2.yml
+          
