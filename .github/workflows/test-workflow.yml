@@ -12,5 +12,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.branchname }}
-      - run: yq eval ".jobs.call-workflow.uses = \"nowe_blajKKKKK/OMG-release.yml@$template_version\"" test-file.yml > test_file_2.yml
-          
+      - run: |
+          yq eval ".jobs.call-workflow.uses = \"nowe_blajKKKKK/OMG-release.yml@$template_version\"" test-file.yml > test_file_2.yml
+          git config --global user.name ${{ github.actor }}         
+          git add test_file_2.yml
+          git commit -m "commit message"
+          git push
